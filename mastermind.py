@@ -33,17 +33,7 @@ def menu(premierLancement):
             print("Erreur : choix invalide")
 
 def jouer():
-    print("Rappel des couleurs disponibles : ")
-    stringCouleurs = ""
-    for couleur in COULEURS:
-        stringCouleurs += couleur + " "
-    print(stringCouleurs)
-    print(f"Longueur du code secret : {LONGUEUR_CODE}")
-    print(f"Nombre maximum de tentatives : {NB_MAX_TENTATIVES}")
-    stringFormat = ""
-    for i in range(LONGUEUR_CODE):
-        stringFormat += COULEURS[i % len(COULEURS)]
-    print(f"Veuillez entrer vos essais au format « {stringFormat} »")
+    printRappels()
 
     codeSecret = genererCodeSecret()
 
@@ -56,6 +46,19 @@ def jouer():
         isTentativeValide = validerTentative(tentative)
         if not(isTentativeValide):
             print("Erreur : format incorrect")
+
+def printRappels():
+    print("Rappel des couleurs disponibles : ")
+    stringCouleurs = ""
+    for couleur in COULEURS:
+        stringCouleurs += couleur + " "
+    print(stringCouleurs)
+    print(f"Longueur du code secret : {LONGUEUR_CODE}")
+    print(f"Nombre maximum de tentatives : {NB_MAX_TENTATIVES}")
+    stringFormat = ""
+    for i in range(LONGUEUR_CODE):
+        stringFormat += COULEURS[i % len(COULEURS)]
+    print(f"Veuillez entrer vos essais au format « {stringFormat} »")
 
 def genererCodeSecret():
     codeSecret = []
