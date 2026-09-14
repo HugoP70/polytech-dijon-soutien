@@ -1,5 +1,5 @@
 from random import randint
-from os import path
+from os import remove, path
 
 COULEURS = ["R", "V", "B", "J", "M", "N"]
 LONGUEUR_CODE = 4
@@ -26,6 +26,7 @@ def menu(premierLancement):
                     jouer()
                 case 1:
                     valeurOk = True
+                    resetStatistiques()
                 case 2:
                     valeurOk = True
                 case _:
@@ -110,5 +111,10 @@ def sauvegarderScore(score):
     scoreTotal += score
     with open(".save", "w") as f:
         f.write(f"{nbParties}\n{scoreTotal}")
+
+def resetStatistiques():
+    if path.isfile(".save"):
+        remove(".save")
+    menu(True)
 
 menu(True)
