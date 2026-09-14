@@ -1,3 +1,7 @@
+COULEURS = ["R", "V", "B", "J", "M", "N"]
+LONGUEUR_CODE = 4
+NB_MAX_TENTATIVES = 12
+
 def menu(premierLancement):
     print("----------------------------------------")
     print("|              Mastermind              |")
