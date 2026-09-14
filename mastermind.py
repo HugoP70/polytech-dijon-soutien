@@ -54,7 +54,8 @@ def jouer():
         else:
             nbTentatives += 1
             nbCorrects = getNbCorrects(tentative, codeSecret)
-            print(f"Correct : {nbCorrects}")
+            nbPartiels = getNbPartiels(tentative, codeSecret)
+            print(f"Correct : {nbCorrects} | Partiel : {nbPartiels}")
             if nbCorrects == LONGUEUR_CODE:
                 codeTrouve = True
 
@@ -101,6 +102,13 @@ def getNbCorrects(tentative, codeSecret):
         if tentative[i] == codeSecret[i]:
             nbCorrects += 1
     return nbCorrects
+
+def getNbPartiels(tentative, codeSecret):
+    nbPartiels = 0
+    for i in range(len(tentative)):
+        if tentative[i] != codeSecret[i] and tentative[i] in codeSecret:
+            nbPartiels += 1
+    return nbPartiels
 
 def sauvegarderScore(score):
     nbParties = 0
