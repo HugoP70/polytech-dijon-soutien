@@ -48,6 +48,10 @@ def jouer():
             print("Erreur : format incorrect")
         else:
             nbTentatives += 1
+            nbCorrects = getNbCorrects(tentative, codeSecret)
+            print(f"Correct : {nbCorrects}")
+            if nbCorrects == LONGUEUR_CODE:
+                codeTrouve = True
     
     menu(False)
 
@@ -81,5 +85,12 @@ def validerTentative(tentative):
             if lettre not in COULEURS:
                 isTentativeValide = False
     return isTentativeValide
+
+def getNbCorrects(tentative, codeSecret):
+    nbCorrects = 0
+    for i in range(len(codeSecret)):
+        if tentative[i] == codeSecret[i]:
+            nbCorrects += 1
+    return nbCorrects
 
 menu(True)
