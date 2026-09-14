@@ -18,7 +18,7 @@ def menu(premierLancement):
     print ("| 2 - Quitter                          |")
     print("----------------------------------------")
     printStatistiques()
-    
+
     valeurOk = False
     while not(valeurOk):
         try:
