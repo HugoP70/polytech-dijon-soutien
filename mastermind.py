@@ -17,6 +17,8 @@ def menu(premierLancement):
     print ("| 1 - Remettre à zéro les statistiques |")
     print ("| 2 - Quitter                          |")
     print("----------------------------------------")
+    printStatistiques()
+    
     valeurOk = False
     while not(valeurOk):
         try:
@@ -117,5 +119,16 @@ def resetStatistiques():
     if path.isfile(PATH_SAUVEGARDE):
         remove(PATH_SAUVEGARDE)
     menu(True)
+
+def printStatistiques():
+    nbParties = 0
+    scoreTotal = 0
+    if path.isfile(PATH_SAUVEGARDE):
+        with open(PATH_SAUVEGARDE) as f:
+            save = f.read()
+            nbParties = int(save.split("\n")[0])
+            scoreTotal = int(save.split("\n")[1])
+    print(f"Nombre de parties : {nbParties}")
+    print(f"Score total : {scoreTotal}")
 
 menu(True)
