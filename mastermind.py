@@ -41,6 +41,16 @@ def jouer():
 
     codeSecret = genererCodeSecret()
 
+    nbTentatives = 0
+    codeTrouve = False
+
+    while nbTentatives < NB_MAX_TENTATIVES and not(codeTrouve):
+        stringInput = f"Essai n°{nbTentatives + 1}"
+        tentative = list(input(""))
+        isTentativeValide = validerTentative(tentative)
+        if not(isTentativeValide):
+            print("Erreur : format incorrect")
+
 def genererCodeSecret():
     codeSecret = []
     for i in range(LONGUEUR_CODE):
@@ -48,5 +58,15 @@ def genererCodeSecret():
         couleur = COULEURS[indexCouleur]
         codeSecret.append(couleur)
     return codeSecret
+
+def validerTentative(tentative):
+    isTentativeValide = True
+    if len(tentative) != LONGUEUR_CODE:
+        isTentativeValide = False
+    else:
+        for lettre in tentative:
+            if lettre not in COULEURS:
+                isTentativeValide = False
+    return isTentativeValide
 
 menu(True)
