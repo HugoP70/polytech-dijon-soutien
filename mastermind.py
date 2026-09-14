@@ -1,4 +1,5 @@
 from random import randint
+from os import path
 
 COULEURS = ["R", "V", "B", "J", "M", "N"]
 LONGUEUR_CODE = 4
@@ -54,6 +55,7 @@ def jouer():
                 codeTrouve = True
 
     score = NB_MAX_TENTATIVES - nbTentatives
+    sauvegarderScore(score)
     print(f"Score : {score}")
     
     menu(False)
@@ -95,5 +97,18 @@ def getNbCorrects(tentative, codeSecret):
         if tentative[i] == codeSecret[i]:
             nbCorrects += 1
     return nbCorrects
+
+def sauvegarderScore(score):
+    nbParties = 0
+    scoreTotal = 0
+    if path.isfile(".save"):
+        with open(".save") as f:
+            save = f.read()
+            nbParties = int(save.split("\n")[0])
+            scoreTotal = int(save.split("\n")[1])
+    nbParties += 1
+    scoreTotal += score
+    with open(".save", "w") as f:
+        f.write(f"{nbParties}\n{scoreTotal}")
 
 menu(True)
