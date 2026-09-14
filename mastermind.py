@@ -41,11 +41,15 @@ def jouer():
     codeTrouve = False
 
     while nbTentatives < NB_MAX_TENTATIVES and not(codeTrouve):
-        stringInput = f"Essai n°{nbTentatives + 1}"
-        tentative = list(input(""))
+        stringInput = f"Essai n°{nbTentatives + 1} : "
+        tentative = list(input(stringInput))
         isTentativeValide = validerTentative(tentative)
         if not(isTentativeValide):
             print("Erreur : format incorrect")
+        else:
+            nbTentatives += 1
+    
+    menu(False)
 
 def printRappels():
     print("Rappel des couleurs disponibles : ")
