@@ -4,6 +4,7 @@ from os import remove, path
 COULEURS = ["R", "V", "B", "J", "M", "N"]
 LONGUEUR_CODE = 4
 NB_MAX_TENTATIVES = 12
+PATH_SAUVEGARDE = ".save"
 
 def menu(premierLancement):
     print("----------------------------------------")
@@ -102,19 +103,19 @@ def getNbCorrects(tentative, codeSecret):
 def sauvegarderScore(score):
     nbParties = 0
     scoreTotal = 0
-    if path.isfile(".save"):
-        with open(".save") as f:
+    if path.isfile(PATH_SAUVEGARDE):
+        with open(PATH_SAUVEGARDE) as f:
             save = f.read()
             nbParties = int(save.split("\n")[0])
             scoreTotal = int(save.split("\n")[1])
     nbParties += 1
     scoreTotal += score
-    with open(".save", "w") as f:
+    with open(PATH_SAUVEGARDE, "w") as f:
         f.write(f"{nbParties}\n{scoreTotal}")
 
 def resetStatistiques():
-    if path.isfile(".save"):
-        remove(".save")
+    if path.isfile(PATH_SAUVEGARDE):
+        remove(PATH_SAUVEGARDE)
     menu(True)
 
 menu(True)
