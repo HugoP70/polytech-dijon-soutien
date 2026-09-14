@@ -38,6 +38,12 @@ def jouer():
     for couleur in COULEURS:
         stringCouleurs += couleur + " "
     print(stringCouleurs)
+    print(f"Longueur du code secret : {LONGUEUR_CODE}")
+    print(f"Nombre maximum de tentatives : {NB_MAX_TENTATIVES}")
+    stringFormat = ""
+    for i in range(LONGUEUR_CODE):
+        stringFormat += COULEURS[i % len(COULEURS)]
+    print(f"Veuillez entrer vos essais au format « {stringFormat} »")
 
     codeSecret = genererCodeSecret()
 
