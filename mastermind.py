@@ -20,6 +20,7 @@ def menu(premierLancement):
             match (choixUtilisateur):
                 case 0:
                     valeurOk = True
+                    jouer()
                 case 1:
                     valeurOk = True
                 case 2:
@@ -28,5 +29,12 @@ def menu(premierLancement):
                     raise ValueError()
         except ValueError:
             print("Erreur : choix invalide")
+
+def jouer():
+    print("Rappel des couleurs disponibles : ")
+    stringCouleurs = ""
+    for couleur in COULEURS:
+        stringCouleurs += couleur + " "
+    print(stringCouleurs)
 
 menu(True)
