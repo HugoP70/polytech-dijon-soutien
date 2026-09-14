@@ -52,6 +52,9 @@ def jouer():
             print(f"Correct : {nbCorrects}")
             if nbCorrects == LONGUEUR_CODE:
                 codeTrouve = True
+
+    score = NB_MAX_TENTATIVES - nbTentatives
+    print(f"Score : {score}")
     
     menu(False)
 
