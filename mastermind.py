@@ -1,3 +1,5 @@
+from random import randint
+
 COULEURS = ["R", "V", "B", "J", "M", "N"]
 LONGUEUR_CODE = 4
 NB_MAX_TENTATIVES = 12
@@ -36,5 +38,15 @@ def jouer():
     for couleur in COULEURS:
         stringCouleurs += couleur + " "
     print(stringCouleurs)
+
+    codeSecret = genererCodeSecret()
+
+def genererCodeSecret():
+    codeSecret = []
+    for i in range(LONGUEUR_CODE):
+        indexCouleur = randint(0, len(COULEURS) - 1)
+        couleur = COULEURS[indexCouleur]
+        codeSecret.append(couleur)
+    return codeSecret
 
 menu(True)
